@@ -11,9 +11,11 @@ class Thing(Model):
     USERNAME_FIELD = 'name'
     is_anonymous = False
     is_authenticated = False
+    
     name = models.CharField(max_length = 30, unique = True, blank = False )
-    description = models.TextField(unique = False, blank = True, max_length = 120)
-    quantity = models.PositiveIntegerField(unique = False, validators=[
+    description = models.CharField(blank = True, max_length = 120)
+    quantity = models.PositiveIntegerField(unique = False, 
+        validators=[
             MaxValueValidator(100),
             MinValueValidator(0)
         ])
